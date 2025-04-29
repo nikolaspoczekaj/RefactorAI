@@ -24,7 +24,6 @@ def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
 
 
     if os.path.isdir(path):
-        logger.warning(f"{path} ist ein Verzeichnis (Ordner).")
         logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(path):
         logger.info(f"{path} is a single file.")
