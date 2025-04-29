@@ -1,12 +1,7 @@
 def start_single_file(file_path: str, model: str, special_instructions: str = None) -> dict:
     
     from ai import AIClient
-    from helpers import check_api_key
 
-    # Check API key
-    api_key = check_api_key()
-
-    # Initialize AI client
     ai_client = AIClient(model=model)
 
     # Read file content
@@ -15,5 +10,5 @@ def start_single_file(file_path: str, model: str, special_instructions: str = No
 
     # Call AI client to refactor the file
     output = ai_client.refactor_file(file_path, input_file_content, special_instructions)
-
+    
     return output

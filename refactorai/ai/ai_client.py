@@ -14,15 +14,20 @@ class AIClient:
                 "content": input_file_content,
                 "special_instructions": special_instructions}
         
-        response = self.client.chat.completions.create(
-            model=self.model,
-            messages=[
-                {"role": "system", "content": AIPrompts.DEFAULT_REFACTOR.value},
-                {"role": "user", "content": input}
-            ],
-            response_format={'type': 'json_object'}
-        )
+        print(input)
         
-        output = json.loads(response.choices[0].message['content'])
+        response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": AIPrompts.DEFAULT_REFACTOR.value},
+                    {"role": "user", "content": f"{input}"}
+                ],
+                stream=False,
+                max_tokens=8000,
+                temperature=1.0,
+                response_format={'type': 'json_object'}
+            )
+        
+        output = json.loads(response.choices[0].message.content)
         
         return output

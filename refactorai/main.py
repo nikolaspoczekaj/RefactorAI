@@ -17,7 +17,7 @@ def main():
 @click.option("--interactive", "-i", is_flag=True, help="manually accept changes")
 def run(path, recursive, model, strategy, interactive):
     """Starte das Refactoring im angegebenen Projektpfad."""
-    api_key = helpers.check_api_key()
+    helpers.check_api_key()
 
     click.echo(f"Starte Refactoring für {path}")
     click.echo(f"model: {model} | strategy: {strategy} | interactive: {interactive}")
@@ -26,7 +26,7 @@ def run(path, recursive, model, strategy, interactive):
         click.echo(f"'{path}' ist ein Verzeichnis (Ordner).")
     elif os.path.isfile(path):
         click.echo(f"'{path}' ist eine Datei.")
-        core.start_single_file(path, model, strategy, interactive)
+        print(core.start_single_file(path, model))
     else:
         click.echo(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 

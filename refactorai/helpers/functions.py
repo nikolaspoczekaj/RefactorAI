@@ -7,4 +7,3 @@ def check_api_key():
     if not api_key:
         click.echo("Error: env-variable REFACTORAI_API_KEY not set!", err=True)
         sys.exit(1)
-    return api_key
