@@ -1,6 +1,5 @@
 from openai import OpenAI
 import os
-import json
 from refactorai.ai.prompts import AIPrompts
 
 class AIClient:
@@ -28,6 +27,6 @@ class AIClient:
                 response_format={'type': 'json_object'}
             )
         
-        output = json.loads(response.choices[0].message.content)
+        output = response.choices[0].message.content
         
         return output
