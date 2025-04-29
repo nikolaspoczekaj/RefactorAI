@@ -1,6 +1,7 @@
 import click
 import helpers
-
+import os
+import core
 
 
 @click.group()
@@ -14,15 +15,20 @@ def main():
 @click.option("--model", "-m", default="deepseek-chat", show_default=True, help="AI-model")
 @click.option("--strategy", "-s", default="basic", show_default=True, type=click.Choice(['basic', 'advanced', 'custom']), help="Refactoring strategy")
 @click.option("--interactive", "-i", is_flag=True, help="manually accept changes")
-def run(path, model, strategy, interactive):
+def run(path, recursive, model, strategy, interactive):
     """Starte das Refactoring im angegebenen Projektpfad."""
     api_key = helpers.check_api_key()
 
     click.echo(f"Starte Refactoring für {path}")
     click.echo(f"model: {model} | strategy: {strategy} | interactive: {interactive}")
     
-    # Hier kommt deine Refactoring-Logik hin!
-    # z.B.: refactorai.core.refactor_project(path, ...)
+    if os.path.isdir(path):
+        click.echo(f"'{path}' ist ein Verzeichnis (Ordner).")
+    elif os.path.isfile(path):
+        click.echo(f"'{path}' ist eine Datei.")
+        core.start_single_file(path, model, strategy, interactive)
+    else:
+        click.echo(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 
 @main.command()
 @click.option("--path", "-p", default=".", help="Pfad zum Python-Projekt (Standard: aktuelles Verzeichnis)")
