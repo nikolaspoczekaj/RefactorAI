@@ -24,20 +24,15 @@ def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
 
 
     if os.path.isdir(path):
-        logger.warning(f"'{path}' ist ein Verzeichnis (Ordner).")
+        logger.warning(f"{path} ist ein Verzeichnis (Ordner).")
         logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(path):
-        logger.info(f"'{path}' ist eine Datei.")
+        logger.info(f"{path} is a single file.")
         logger.info(core.start_single_file(path, model))
     else:
         logger.error(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 
 
-@main.command()
-@click.option("--path", "-p", default=".", help="Pfad zum Python-Projekt (Standard: aktuelles Verzeichnis)")
-def check(path: str) -> None:
-    api_key = helpers.check_api_key()
-    # Hier Logic f�r Check (Analyse, aber kein Refactor)
 
 
 if __name__ == "__main__":

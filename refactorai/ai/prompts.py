@@ -1,10 +1,12 @@
 from enum import Enum
 
+
 class AIPrompts(Enum):
     """Enum class for AI prompts."""
 
     # Prompt for generating a Python function to calculate the sum of two numbers
-    DEFAULT_REFACTOR = ("""
+    DEFAULT_REFACTOR = (
+        """
         Refactor the given Python code to comply with PEP 8, Python best practices, and any additional instructions provided. The input and output must be in JSON format, with the following structure:
 
 Input JSON Structure:
@@ -67,7 +69,7 @@ Input:
 
 {
     "name": "example.py",
-    "content": "def calc(a,b):\n  return a+b\nclass MyClass:\n  def __init__(self,x):\n    self.x = x",
+    "content": "def calc(a,b):\\n  return a+b\\nclass MyClass:\\n  def __init__(self,x):\\n    self.x = x",
     "special_instructions": "Add type hints and docstrings"
 }
 
@@ -75,7 +77,7 @@ Output:
                         
 {
     "name": "example.py",
-    "content": "def calc(a: int, b: int) -> int:\n    \"\"\"Add two integers and return the result.\"\"\"\n    return a + b\n\n\nclass MyClass:\n    \"\"\"Example class with typed attributes.\"\"\"\n\n    def __init__(self, x: int) -> None:\n        self.x = x",
+    "content": "def calc(a: int, b: int) -> int:\\n    \\\"\\\"\\\"Add two integers and return the result.\\\"\\\"\\\"\\n    return a + b\\n\\n\\nclass MyClass:\\n    \\\"\\\"\\\"Example class with typed attributes.\\\"\\\"\\\"\\n\\n    def __init__(self, x: int) -> None:\\n        self.x = x",
     "changes_made": [
         "Added type hints to functions",
         "Added docstrings",
@@ -92,5 +94,3 @@ ADDITIONAL INSTUCTIONS:
     ONLY UTF-8 CHARACTERS ARE ALLOWED. 
 """
     )
-
-    
