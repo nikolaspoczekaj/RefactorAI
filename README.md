@@ -1,8 +1,8 @@
-# RefactorAI 🔄🤖
+# RefactorAI
 
-**Automated Code Refactoring with AI**
+🔁🤖**Automated Code Refactoring with AI**
 
-RefactorAI is a powerful CLI tool that **automatically refactors your Python code** using AI, ensuring compliance with **PEP 8**, best practices, and clean code principles. Whether you need to refactor a single file or an entire project, RefactorAI optimizes your codebase with minimal effort.
+RefactorAI is a CLI tool that **automatically refactors your Python code** using AI, ensuring compliance with **PEP 8**, best practices, and clean code principles. Whether you need to refactor a single file or an entire project, RefactorAI optimizes your codebase with minimal effort.
 
 ---
 
@@ -34,4 +34,36 @@ pip install -e .
 
 ---
 
-## 🛠 Usage
+## 🛠 Setup
+
+### **Step 1 (optional): Setup AI Api-Key and URL as environment-variables**
+
+You dont have to set these. But if you dont, you are promted to input them every time.
+
+**Linux**:
+
+```bash
+export REFACTORAI_API_KEY = sk-xxxxxxxxxxxxxx
+export REFACTORAI_API_URL = https://api.deepseek.com
+```
+
+**Windows**:
+
+Set env-variables via system control.
+
+---
+
+## 💻 Usage
+
+### **Refactor a single file:**
+
+```bash
+refactorai run -d /path/to/file.py
+```
+
+---
+
+## 👷‍♀️ Contributing 👷
+
+Please contribute to this project by submitting **Issues** or **PR's**.
+Thank you for your interest in _RefactorAI_.
