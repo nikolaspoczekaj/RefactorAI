@@ -17,7 +17,7 @@ def setup_logging(level=logging.INFO):
     logging.basicConfig(
         level=level,
         format="%(message)s",
-        handlers=[RichHandler(console=console, show_time=False, show_level=False)]
+        handlers=[RichHandler(console=console, show_time=False, show_level=True, markup=True)],
     )
     return logging.getLogger("refactorai")
 
