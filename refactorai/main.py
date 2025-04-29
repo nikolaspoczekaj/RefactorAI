@@ -4,6 +4,7 @@ import click
 
 import refactorai.core as core
 import refactorai.helpers as helpers
+from refactorai.logging import logger
 
 
 @click.group()
@@ -24,13 +25,13 @@ def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
     click.echo(f"Starte Refactoring für {path}")
 
     if os.path.isdir(path):
-        click.echo(f"'{path}' ist ein Verzeichnis (Ordner).")
-        click.echo("Processing of whole directory isn't implemented yet. Please specify a file...")
+        logger.warning(f"'{path}' ist ein Verzeichnis (Ordner).")
+        logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(path):
-        click.echo(f"'{path}' ist eine Datei.")
-        print(core.start_single_file(path, model))
+        logger.info(f"'{path}' ist eine Datei.")
+        logger.success(core.start_single_file(path, model))
     else:
-        click.echo(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
+        logger.error(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 
 
 @main.command()
