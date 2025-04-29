@@ -1,6 +1,6 @@
 def start_single_file(file_path: str, model: str, special_instructions: str = None) -> dict:
     
-    from ai import AIClient
+    from refactorai.ai import AIClient
 
     ai_client = AIClient(model=model)
 
@@ -14,4 +14,4 @@ def start_single_file(file_path: str, model: str, special_instructions: str = No
     with open(file_path, 'w') as file:
         file.write(output['content'])
 
-    return output
+    return output['changes_made']

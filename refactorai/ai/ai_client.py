@@ -1,7 +1,7 @@
 from openai import OpenAI
 import os
 import json
-from ai.prompts import AIPrompts
+from refactorai.ai.prompts import AIPrompts
 
 class AIClient:
     def __init__(self, model):

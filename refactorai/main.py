@@ -25,7 +25,7 @@ def run(path, recursive, model, interactive):
         click.echo("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(path):
         click.echo(f"'{path}' ist eine Datei.")
-        core.start_single_file(path, model)
+        print(core.start_single_file(path, model))
     else:
         click.echo(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 
