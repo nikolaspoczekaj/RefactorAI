@@ -4,12 +4,12 @@ import click
 
 import refactorai.core as core
 import refactorai.helpers as helpers
-from refactorai.logging import logger
+from refactorai.logger import logger
 
 
 @click.group()
 def main() -> None:
-    """RefactorAI CLI – AI-driven refactoring tool."""
+    """RefactorAI CLI - AI-driven refactoring tool."""
     pass
 
 
@@ -19,17 +19,16 @@ def main() -> None:
 @click.option("--model", "-m", default="deepseek-chat", show_default=True, help="AI-model")
 @click.option("--interactive", "-i", is_flag=True, help="manually accept changes")
 def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
-    """Starte das Refactoring im angegebenen Projektpfad."""
+    """Start refactoring."""
     helpers.check_api_key()
 
-    click.echo(f"Starte Refactoring für {path}")
 
     if os.path.isdir(path):
         logger.warning(f"'{path}' ist ein Verzeichnis (Ordner).")
         logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(path):
         logger.info(f"'{path}' ist eine Datei.")
-        logger.success(core.start_single_file(path, model))
+        logger.info(core.start_single_file(path, model))
     else:
         logger.error(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
 
@@ -37,10 +36,8 @@ def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
 @main.command()
 @click.option("--path", "-p", default=".", help="Pfad zum Python-Projekt (Standard: aktuelles Verzeichnis)")
 def check(path: str) -> None:
-    """Überprüfe mögliche Refactorings, ohne Änderungen vorzunehmen."""
     api_key = helpers.check_api_key()
-    click.echo(f"Check-Modus für {path}")
-    # Hier Logic für Check (Analyse, aber kein Refactor)
+    # Hier Logic f�r Check (Analyse, aber kein Refactor)
 
 
 if __name__ == "__main__":
