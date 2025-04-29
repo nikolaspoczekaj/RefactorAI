@@ -1,2 +1,22 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "refactorai"
+version = "0.0.2"
+description = "Automated Code Refactoring with AI"
+authors = [
+  { name="nikolaspoczekaj", email="nikolas.poczekaj@gmail.com" }
+]
+dependencies = [
+   "openai>=1.76.0",
+   "click==8.1.8",
+]
+requires-python = ">=3.7"
+
+
 [project.scripts]
-refactorai = "refactorai.cli:cli"
+refactorai = "refactorai.main:main"
+
+

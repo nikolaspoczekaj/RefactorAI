@@ -1,2 +1,6 @@
 /venv
+/dist
+/build
 *debug.py*
+/refactorai.egg-info
+*/__pycache__

@@ -1,7 +1,7 @@
 import click
-import helpers
+import refactorai.helpers as helpers
 import os
-import core
+import refactorai.core as core
 
 
 @click.group()
