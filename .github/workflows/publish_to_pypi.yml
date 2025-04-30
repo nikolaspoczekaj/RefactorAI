@@ -28,13 +28,13 @@ jobs:
           git config --global user.email "actions@github.com"
 
       - name: Bump version (Patch)
-        run: bump2version patch  # Ändere zu "minor" oder "major" für größere Updates
+        run: bump2version patch
 
       - name: Push version bump
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
-          branch: master
+          branch: main
 
       - name: Build package
         run: python -m build
