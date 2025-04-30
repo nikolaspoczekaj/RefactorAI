@@ -1,9 +1,5 @@
-🚧🚧🚧🚧🚧🚧🚧
-
-**This project is currently in active development-any contributions, feedback, or help are warmly welcome!** 
-
-🚧🚧🚧🚧🚧🚧🚧
-
+> [!NOTE]
+> This project is currently in active development-any contributions, feedback, or help are warmly welcome!\*\*
 
 # RefactorAI
 
@@ -65,7 +61,30 @@ Set env-variables via system control.
 ### **Refactor a single file:**
 
 ```bash
-refactorai run -d /path/to/file.py
+refactorai file.py
+```
+
+### **Refactor a directory:**
+
+**Current directory**
+
+```bash
+refactorai
+```
+
+**Any directory**
+
+```bash
+refactorai /path/to/directory
+```
+
+**Recursively**
+
+> [!WARNING]
+> Make sure the directory has no venv in it.
+
+```bash
+refactorai /path/to/directory -r
 ```
 
 ---
