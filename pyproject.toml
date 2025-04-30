@@ -12,6 +12,7 @@ authors = [
 dependencies = [
    "openai>=1.76.0",
    "click==8.1.8",
+   "rich==14.0.0"
 ]
 requires-python = ">=3.7"
 

@@ -25,9 +25,9 @@ def run(path: str, recursive: bool, model: str, interactive: bool, special_instr
     STATE.init(path, interactive, recursive, model, special_instructions)
 
 
-    if os.path.isdir(STATE.PATH):
+    if os.path.isdir(STATE.PATH) and STATE.RECURSIVE:
         logger.warning(f"{STATE.PATH} is a directory.")
-        logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
+        core.start_directory_recursive(STATE.PATH)
     elif os.path.isfile(STATE.PATH):
         logger.info(f"{STATE.PATH} is a single file.")
         core.start_single_file(STATE.PATH)
