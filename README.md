@@ -3,6 +3,12 @@
 
 # RefactorAI
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Unlicense License][license-shield]][license-url]
+
 🔁🤖**Automated Code Refactoring with AI**
 
 RefactorAI is a CLI tool that **automatically refactors your Python code** using AI, ensuring compliance with **PEP 8**, best practices, and clean code principles. Whether you need to refactor a single file or an entire project, RefactorAI optimizes your codebase with minimal effort.
@@ -93,3 +99,15 @@ refactorai /path/to/directory -r
 
 Please contribute to this project by submitting **Issues** or **PR's**.
 Thank you for your interest in _RefactorAI_.
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/nikolaspoczekaj/RefactorAI.svg?style=for-the-badge
+[contributors-url]: https://github.com/nikolaspoczekaj/RefactorAI/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nikolaspoczekaj/RefactorAI.svg?style=for-the-badge
+[forks-url]: https://github.com/nikolaspoczekaj/RefactorAI/network/members
+[stars-shield]: https://img.shields.io/github/stars/nikolaspoczekaj/RefactorAI.svg?style=for-the-badge
+[stars-url]: https://github.com/nikolaspoczekaj/RefactorAI/stargazers
+[issues-shield]: https://img.shields.io/github/issues/nikolaspoczekaj/RefactorAI.svg?style=for-the-badge
+[issues-url]: https://github.com/nikolaspoczekaj/RefactorAI/issues
+[license-shield]: https://img.shields.io/github/license/nikolaspoczekaj/RefactorAI.svg?style=for-the-badge
+[license-url]: https://github.com/nikolaspoczekaj/RefactorAI/blob/master/LICENSE.txt
