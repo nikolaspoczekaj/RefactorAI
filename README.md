@@ -7,7 +7,10 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+
 [![Unlicense License][license-shield]][license-url]
+[![PyPI](https://img.shields.io/pypi/v/refactorai.svg)](https://pypi.org/project/refactorai/)
+
 
 🔁🤖**Automated Code Refactoring with AI**
 
