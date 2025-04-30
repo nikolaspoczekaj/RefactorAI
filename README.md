@@ -1,5 +1,5 @@
 > [!NOTE]
-> This project is currently in active development-any contributions, feedback, or help are warmly welcome!\*\*
+> **This project is currently in active development. Any contributions, feedback, or help are warmly welcome!**
 
 # RefactorAI
 
