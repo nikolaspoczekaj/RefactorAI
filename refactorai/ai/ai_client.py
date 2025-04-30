@@ -1,12 +1,13 @@
 from openai import OpenAI
 import os
 from refactorai.ai.prompts import AIPrompts
+from refactorai.config import STATE
 
 
 class AIClient:
     """Client for interacting with AI services for code refactoring."""
 
-    def __init__(self, model: str) -> None:
+    def __init__(self) -> None:
         """Initialize the AI client with the specified model.
         
         Args:
@@ -16,13 +17,12 @@ class AIClient:
             api_key=os.getenv("REFACTORAI_API_KEY"),
             base_url="https://api.deepseek.com"
         )
-        self.model = model
+        self.model = STATE.MODEL
     
     def refactor_file(
         self,
         input_file_path: str,
-        input_file_content: str,
-        special_instructions: str = None
+        input_file_content: str
     ) -> str:
         """Refactor the given file content using the AI model.
         
@@ -37,7 +37,7 @@ class AIClient:
         input_data = {
             "file": input_file_path,
             "content": input_file_content,
-            "special_instructions": special_instructions
+            "special_instructions": STATE.SPECIAL_INSTRUCTIONS
         }
         
         response = self.client.chat.completions.create(

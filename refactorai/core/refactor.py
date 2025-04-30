@@ -2,24 +2,14 @@ from refactorai.ai import AIClient
 import json
 import refactorai.helpers as helpers
 
-def refactor_file(file_path: str, model: str, special_instructions: str = None) -> dict:
-    """
-    Refactor a single file using the specified AI model and special instructions.
-
-    Args:
-        file_path (str): The path to the file to be refactored.
-        model (str): The AI model to use for refactoring.
-        special_instructions (str, optional): Special instructions for the AI model.
-
-    Returns:
-        dict: A dictionary containing the changes made to the file.
-    """
-    ai_client = AIClient(model=model)
+def refactor_file(file_path: str) -> dict:
+    
+    ai_client = AIClient()
 
     with open(file_path, 'r') as file:
         input_file_content = file.read()
 
-    output = ai_client.refactor_file(file_path, input_file_content, special_instructions)
+    output = ai_client.refactor_file(file_path, input_file_content)
     output = json.loads(output)
 
     with open(file_path, 'w') as file:
