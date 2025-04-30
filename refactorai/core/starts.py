@@ -4,16 +4,7 @@ import refactorai.helpers as helpers
 
 
 def start_single_file(file_path: str, model: str, special_instructions: str = None) -> dict:
-    """Refactor a single file using the specified AI model.
     
-    Args:
-        file_path: Path to the file to refactor.
-        model: The AI model to use for refactoring.
-        special_instructions: Optional instructions for the AI.
-    
-    Returns:
-        A dictionary of changes made by the AI.
-    """
     ai_client = AIClient(model=model)
 
     with open(file_path, 'r') as file:
@@ -30,6 +21,3 @@ def start_single_file(file_path: str, model: str, special_instructions: str = No
             file.write("\n\n\n## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)")
 
     return output['changes_made']
-
-
-## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)

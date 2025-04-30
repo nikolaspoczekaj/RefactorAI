@@ -5,6 +5,7 @@ import click
 import refactorai.core as core
 import refactorai.helpers as helpers
 from refactorai.logger import logger
+from refactorai.config import STATE
 
 
 @click.group()
@@ -18,19 +19,20 @@ def main() -> None:
 @click.option("--recursive", "-r", is_flag=True, help="path to the file to be refactored")
 @click.option("--model", "-m", default="deepseek-chat", show_default=True, help="AI-model")
 @click.option("--interactive", "-i", is_flag=True, help="manually accept changes")
-def run(path: str, recursive: bool, model: str, interactive: bool) -> None:
+@click.option("--special-instructions", "-s", default=None, help="special instructions for the AI model")
+def run(path: str, recursive: bool, model: str, interactive: bool, special_instructions: str | None) -> None:
     """Start refactoring."""
-    helpers.check_api_key()
+    STATE.init(path, interactive, recursive, model, special_instructions)
 
 
-    if os.path.isdir(path):
-        logger.warning(f"{path} ist ein Verzeichnis (Ordner).")
+    if os.path.isdir(STATE.PATH):
+        logger.warning(f"{STATE.PATH} is a directory.")
         logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
-    elif os.path.isfile(path):
-        logger.info(f"{path} is a single file.")
-        logger.info(core.start_single_file(path, model))
+    elif os.path.isfile(STATE.PATH):
+        logger.info(f"{STATE.PATH} is a single file.")
+        logger.info(core.start_single_file(STATE.PATH, STATE.MODEL))
     else:
-        logger.error(f"'{path}' existiert nicht oder ist weder eine Datei noch ein Ordner.")
+        logger.error(f"'{STATE.PATH}' does not exist or is neither a file nor a directory.")
 
 
 
