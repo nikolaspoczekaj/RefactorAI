@@ -19,7 +19,7 @@ class AIClient:
         )
         self.model = STATE.MODEL
     
-    def refactor_file(
+    def refactor_python_file(
         self,
         input_file_path: str,
         input_file_content: str
@@ -45,7 +45,7 @@ class AIClient:
             messages=[
                 {
                     "role": "system",
-                    "content": AIPrompts.DEFAULT_REFACTOR.value
+                    "content": AIPrompts.DEFAULT_PYTHON_REFACTOR.value
                 },
                 {
                     "role": "user",

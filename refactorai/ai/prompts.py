@@ -4,8 +4,7 @@ from enum import Enum
 class AIPrompts(Enum):
     """Enum class for AI prompts."""
 
-    # Prompt for generating a Python function to calculate the sum of two numbers
-    DEFAULT_REFACTOR = (
+    DEFAULT_PYTHON_REFACTOR = (
         """
         Refactor the given Python code to comply with PEP 8, Python best practices, and any additional instructions provided. The input and output must be in JSON format, with the following structure:
 
@@ -63,34 +62,13 @@ Output Clarity:
 
 List all changes made in changes_made.
 
-
-Example Input/Output:
-Input:
-
-{
-    "name": "example.py",
-    "content": "def calc(a,b):\\n  return a+b\\nclass MyClass:\\n  def __init__(self,x):\\n    self.x = x",
-    "special_instructions": "Add type hints and docstrings"
-}
-
-Output:
-                        
-{
-    "name": "example.py",
-    "content": "def calc(a: int, b: int) -> int:\\n    \\\"\\\"\\\"Add two integers and return the result.\\\"\\\"\\\"\\n    return a + b\\n\\n\\nclass MyClass:\\n    \\\"\\\"\\\"Example class with typed attributes.\\\"\\\"\\\"\\n\\n    def __init__(self, x: int) -> None:\\n        self.x = x",
-    "changes_made": [
-        "Added type hints to functions",
-        "Added docstrings",
-        "Fixed indentation (4 spaces)",
-        "Added spacing around operators"
-    ]
-}
-
                         
 ADDITIONAL INSTUCTIONS:
     
     NEVER OUTPUT ANYTHING BUT JSON. DO NOT ADD ANY TEXT, COMMENTS, OR EXPLANATIONS OUTSIDE OF THE JSON STRUCTURE !!!
     IF THE INPUT CODE IS ALREADY PERFECT, RETURN THE SAME JSON STRUCTURE WITHOUT ANY MODIFICATIONS AND AN EMPTY CHANGES_MADE LIST.
-    ONLY UTF-8 CHARACTERS ARE ALLOWED. 
+    ONLY UTF-8 CHARACTERS ARE ALLOWED.
+    DONT EVER CHANGE FUNCTIONALLITY OR LOGIC OF THE CODE.
+    REMOVE ALL UNUSED IMPORTS AND VARIABLES. 
 """
     )

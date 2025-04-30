@@ -30,7 +30,7 @@ def run(path: str, recursive: bool, model: str, interactive: bool, special_instr
         logger.warning("Processing of whole directory isn't implemented yet. Please specify a file...")
     elif os.path.isfile(STATE.PATH):
         logger.info(f"{STATE.PATH} is a single file.")
-        logger.info(core.start_single_file(STATE.PATH, STATE.MODEL))
+        core.start_single_file(STATE.PATH)
     else:
         logger.error(f"'{STATE.PATH}' does not exist or is neither a file nor a directory.")
 
