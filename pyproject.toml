@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "refactorai"
-version = "0.1.2"
+version = "0.1.3"
 description = "Automated Code Refactoring with AI"
 authors = [
   { name="nikolaspoczekaj", email="nikolas.poczekaj@gmail.com" }
