@@ -13,7 +13,7 @@ theme = Theme({
 
 console = Console(theme=theme)
 
-def setup_logging(level=logging.INFO):
+def setup_logging(level: int = logging.INFO) -> logging.Logger:
     logging.basicConfig(
         level=level,
         format="%(message)s",
@@ -22,3 +22,6 @@ def setup_logging(level=logging.INFO):
     return logging.getLogger("refactorai")
 
 logger = setup_logging()
+
+
+## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)

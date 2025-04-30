@@ -17,7 +17,7 @@ class AIClient:
             api_key=os.getenv("REFACTORAI_API_KEY"),
             base_url="https://api.deepseek.com"
         )
-        self.model = STATE.MODEL
+        self.model = STATE.model
     
     def refactor_python_file(
         self,
@@ -37,7 +37,7 @@ class AIClient:
         input_data = {
             "file": input_file_path,
             "content": input_file_content,
-            "special_instructions": STATE.SPECIAL_INSTRUCTIONS
+            "special_instructions": STATE.special_instructions
         }
         
         response = self.client.chat.completions.create(

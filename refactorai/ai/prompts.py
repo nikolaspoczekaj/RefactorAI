@@ -72,3 +72,6 @@ ADDITIONAL INSTUCTIONS:
     REMOVE ALL UNUSED IMPORTS AND VARIABLES. 
 """
     )
+
+
+## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)
