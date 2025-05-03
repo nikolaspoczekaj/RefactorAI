@@ -11,6 +11,7 @@ from refactorai.config import STATE
 @click.option("--model", "-m", default="deepseek-chat", show_default=True, help="AI model to use")
 @click.option("--interactive", "-i", is_flag=True, help="Manually accept changes")
 @click.option("--special-instructions", "-s", default=None, help="Special instructions for the AI model")
+@click.option("--no-watermark", "-x", default=None, help="Disables RefactorAI Watermark")
 def main(path: str, recursive: bool, model: str, interactive: bool, special_instructions: str | None) -> None:
     """RefactorAI CLI - AI-driven refactoring tool."""
     STATE.init(path, interactive, recursive, model, special_instructions)

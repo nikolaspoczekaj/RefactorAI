@@ -6,6 +6,7 @@ class AppState:
         self.path: str | None = None
         self.interactive: bool | None = None
         self.recursive: bool = False
+        self.no_watermark: bool = False
         self.model: str | None = None
         self.special_instructions: str | None = None
         self.api_key: str | None = None
@@ -33,6 +34,12 @@ class AppState:
         else:
             self.recursive = recursive
 
+    def init_no_watermark(self, no_watermark: bool | None) -> None:
+        if no_watermark is None:
+            self.no_watermark = False
+        else:
+            self.no_watermark = no_watermark
+
     def init_model(self, model: str | None) -> None:
         if model is None:
             self.model = "deepseek-chat"
@@ -59,6 +66,7 @@ class AppState:
         recursive: bool | None,
         model: str | None,
         special_instructions: str | None,
+        no_watermark: bool | None,
     ) -> None:
         self.init_path(path)
         self.init_interactive(interactive)
@@ -67,6 +75,7 @@ class AppState:
         self.init_special_instructions(special_instructions)
         self.init_api_url()
         self.init_api_key()
+        self.init_no_watermark()
 
 
 STATE = AppState()
