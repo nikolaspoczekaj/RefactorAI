@@ -1,14 +1,3 @@
-import os
-import sys
-import click
-
-
-def check_api_key() -> None:
-    api_key = os.getenv("REFACTORAI_API_KEY")
-    if not api_key:
-        click.echo("Error: env-variable REFACTORAI_API_KEY not set!", err=True)
-        sys.exit(1)
-
 
 def check_last_line(file_path: str) -> bool:
     try:

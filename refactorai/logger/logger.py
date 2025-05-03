@@ -1,27 +1,40 @@
-from rich.console import Console
-from rich.theme import Theme
-from rich.logging import RichHandler
 import logging
+import sys
 
-theme = Theme({
-    "info": "dim cyan",
-    "warning": "gold3",
-    "error": "bold red",
-    "success": "bold green",
-    "debug": "gray50",
-})
+# ANSI-Farbcodes
+COLORS = {
+    'DEBUG': '\033[90m',      # Grau
+    'INFO': '\033[36m',       # Cyan
+    'SUCCESS': '\033[92m',    # Grün
+    'WARNING': '\033[93m',    # Gelb
+    'ERROR': '\033[91m',      # Rot
+    'RESET': '\033[0m'
+}
 
-console = Console(theme=theme)
+class ColorFormatter(logging.Formatter):
+    def format(self, record):
+        color = COLORS.get(record.levelname, COLORS['RESET'])
+        msg = super().format(record)
+        return f"{color}{msg}{COLORS['RESET']}"
 
-def setup_logging(level: int = logging.INFO) -> logging.Logger:
-    logging.basicConfig(
-        level=level,
-        format="%(message)s",
-        handlers=[RichHandler(console=console, show_time=False, show_level=True, markup=True)],
-    )
-    return logging.getLogger("refactorai")
+class SuccessLogger(logging.Logger):
+    SUCCESS = 25
+    def success(self, msg, *args, **kwargs):
+        if self.isEnabledFor(self.SUCCESS):
+            self._log(self.SUCCESS, msg, args, **kwargs)
+
+logging.setLoggerClass(SuccessLogger)
+logging.addLevelName(25, "SUCCESS")
+
+def setup_logging(level=logging.INFO):
+    handler = logging.StreamHandler(sys.stdout)
+    formatter = ColorFormatter("%(levelname)s: %(message)s")
+    handler.setFormatter(formatter)
+    logger = logging.getLogger("global_logger")
+    logger.setLevel(level)
+    logger.handlers = [handler]
+    return logger
 
 logger = setup_logging()
 
 
-## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)
