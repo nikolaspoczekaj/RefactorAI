@@ -2,6 +2,7 @@ from openai import OpenAI
 import os
 from refactorai.ai.prompts import AIPrompts
 from refactorai.config import STATE
+import time
 
 
 class AIClient:
@@ -23,7 +24,7 @@ class AIClient:
         self,
         input_file_path: str,
         input_file_content: str
-    ) -> str:
+    ) -> dict:
         """Refactor the given file content using the AI model.
         
         Args:
@@ -32,8 +33,12 @@ class AIClient:
             special_instructions: Optional instructions for refactoring.
         
         Returns:
-            The refactored content as a string.
+            A dictionary containing:
+            - 'output': The refactored content as a string
+            - 'execution_time': The time taken in seconds (float)
         """
+        start_time = time.time()
+        
         input_data = {
             "file": input_file_path,
             "content": input_file_content,
@@ -59,8 +64,10 @@ class AIClient:
         )
         
         output = response.choices[0].message.content
+        execution_time = time.time() - start_time
         
-        return output
+        return {
+            "output": output,
+            "execution_time": execution_time
+        }
 
-
-## refactored by RefactorAI (https://github.com/nikolaspoczekaj/RefactorAI)

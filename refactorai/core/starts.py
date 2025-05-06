@@ -41,7 +41,7 @@ def start_directory_recursive(directory_path: str) -> None:
     threads: List[threading.Thread] = []
     for file_path in py_files:
         thread = threading.Thread(
-            target=start_single_file,
+            target=refactor_python_file,
             args=(file_path,),
             name=f"RefactorThread-{os.path.basename(file_path)}"
         )

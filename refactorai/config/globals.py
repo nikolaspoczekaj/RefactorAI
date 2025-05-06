@@ -75,7 +75,7 @@ class AppState:
         self.init_special_instructions(special_instructions)
         self.init_api_url()
         self.init_api_key()
-        self.init_no_watermark()
+        self.init_no_watermark(no_watermark)
 
 
 STATE = AppState()

@@ -11,6 +11,8 @@ def refactor_python_file(file_path: str) -> dict:
         input_file_content = file.read()
 
     output = ai_client.refactor_python_file(file_path, input_file_content)
+    time = output['execution_time']
+    output = output['output']
     output = json.loads(output)
 
     with open(file_path, 'w') as file:
